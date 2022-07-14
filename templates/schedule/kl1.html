@@ -1,0 +1,287 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}{% endblock%}
+
+{% block style %}
+     <style>
+        #selector {margin : 10px; float:right }
+        #k1league{margin: 0 auto; width : 100%; margin-top: 30px}
+        #k1league th {border-bottom:3px solid gray; text-align: center; padding: 15px;}
+        #k1league td {border:none; padding: 10px; text-align: center;}
+        th {color: gray; font-weight: bolder}
+
+    </style>
+{% endblock%}
+
+{% block contents %}
+    <div id="selector" class="mt-5"><label for="date"></label>
+        <select id = date onchange ="goThere()" >
+        <option value="july_all">7월 전체일정</option>
+        </select>
+    </div>
+    <br>
+    <br>
+    <br>
+    <table id='k1league' style="width:1200px">
+        <tr>
+            <th>날짜</th>
+            <th>시간</th>
+            <th>홈</th>
+            <th></th>
+            <th>원정</th>
+        </tr>
+
+            <tr>
+            <td>2022.07.02 (토)</td>
+            <td>18:00</td>
+            <td><img src="/static/imgs/제주 유나이티드/reclogo.png">제주</td>
+            <td>2&nbsp;:&nbsp;2</td>
+            <td><img src="/static/imgs/FC서울/reclogo.png">FC서울</td>
+            </tr>
+
+             <tr>
+            <td>2022.07.02 (토)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/포항 스틸러스/reclogo.png">포항 스틸러스</td>
+            <td>2&nbsp;:&nbsp;0</td>
+            <td><img src="/static/imgs/울산 현대 축구단/reclogo.png">울산 현대</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.02 (토)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/김천 상무 프로축구단/reclogo.png">김천 상무 프로축구단</td>
+            <td>1&nbsp;:&nbsp;2</td>
+            <td><img src="/static/imgs/전북 현대 모터스/reclogo.png">전북 현대 모터스</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.02 (토)</td>
+            <td>20:00</td>
+            <td><img src="/static/imgs/성남FC/reclogo.png">성남 FC</td>
+            <td>0&nbsp;:&nbsp;2</td>
+            <td><img src="/static/imgs/강원FC/reclogo.png">강원</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.03 (일)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/대구FC/reclogo.png">대구FC</td>
+            <td>0&nbsp;:&nbsp;0</td>
+            <td><img src="/static/imgs/수원FC/reclogo.png">수원FC</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.03 (일)</td>
+            <td>19:30</td>
+            <td><img src="/static/imgs/수원삼성/reclogo.png">수원삼성</td>
+            <td>0&nbsp;:&nbsp;0</td>
+            <td><img src="/static/imgs/인천 유나이티드/reclogo.png">인천UTD</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.05 (화)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/김천 상무 프로축구단/reclogo.png">김천 상무 프로축구단</td>
+            <td>4&nbsp;:&nbsp;0</td>
+            <td><img src="/static/imgs/제주 유나이티드/reclogo.png">제주</td>
+            </tr>
+
+             <tr>
+            <td>2022.07.05 (화)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/성남FC/reclogo.png">성남 FC</td>
+            <td>1&nbsp;:&nbsp;4</td>
+            <td><img src="/static/imgs/포항 스틸러스/reclogo.png">포항 스틸러스</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.05 (화)</td>
+            <td>19:30</td>
+            <td><img src="/static/imgs/울산 현대 축구단/reclogo.png">울산 현대</td>
+            <td>2&nbsp;:&nbsp;1</td>
+            <td><img src="/static/imgs/강원FC/reclogo.png">강원</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.06 (수)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/수원삼성/reclogo.png">수원삼성</td>
+            <td>1&nbsp;:&nbsp;1</td>
+            <td><img src="/static/imgs/대구FC/reclogo.png">대구FC</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.06 (수)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/인천 유나이티드/reclogo.png">인천UTD</td>
+            <td>0&nbsp;:&nbsp;1</td>
+            <td><img src="/static/imgs/수원FC/reclogo.png">수원FC</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.06 (수)</td>
+            <td>19:30</td>
+            <td><img src="/static/imgs/FC서울/reclogo.png">FC서울</td>
+            <td>0&nbsp;:&nbsp;1</td>
+            <td><img src="/static/imgs/전북 현대 모터스/reclogo.png">전북 현대 모터스</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.08 (금)</td>
+            <td>19:30</td>
+            <td><img src="/static/imgs/제주 유나이티드/reclogo.png">제주</td>
+            <td>3&nbsp;:&nbsp;2</td>
+            <td><img src="/static/imgs/성남FC/reclogo.png">성남 FC</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.08 (금)</td>
+            <td>19:30</td>
+            <td><img src="/static/imgs/강원FC/reclogo.png">강원</td>
+            <td>3&nbsp;:&nbsp;2</td>
+            <td><img src="/static/imgs/김천 상무 프로축구단/reclogo.png">김천 상무 프로축구단</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.09 (토)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/전북 현대 모터스/reclogo.png">전북 현대 모터스</td>
+            <td>2&nbsp;:&nbsp;2</td>
+            <td><img src="/static/imgs/인천 유나이티드/reclogo.png">인천UTD</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.09 (토)</td>
+            <td>20:00</td>
+            <td><img src="/static/imgs/대구FC/reclogo.png">대구FC</td>
+            <td>1&nbsp;:&nbsp;1</td>
+            <td><img src="/static/imgs/울산 현대 축구단/reclogo.png">울산 현대</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.10 (일)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/수원FC/reclogo.png">수원FC</td>
+            <td>4&nbsp;:&nbsp;3</td>
+            <td><img src="/static/imgs/FC서울/reclogo.png">FC서울</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.10 (일)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/포항 스틸러스/reclogo.png">포항 스틸러스</td>
+            <td>1&nbsp;:&nbsp;0</td>
+            <td><img src="/static/imgs/수원삼성/reclogo.png">수원삼성</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.16 (토)</td>
+            <td>18:00</td>
+            <td><img src="/static/imgs/전북 현대 모터스/reclogo.png">전북 현대 모터스</td>
+                <td></td>
+            <td><img src="/static/imgs/성남FC/reclogo.png">성남 FC</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.16 (토)</td>
+            <td>18:00</td>
+            <td><img src="/static/imgs/울산 현대 축구단/reclogo.png">울산 현대</td>
+                <td></td>
+            <td><img src="/static/imgs/수원삼성/reclogo.png">수원삼성</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.16 (토)</td>
+            <td>18:00</td>
+            <td><img src="/static/imgs/김천 상무 프로축구단/reclogo.png">김천 상무 프로축구단</td>
+                <td></td>
+            <td><img src="/static/imgs/인천 유나이티드/reclogo.png">인천UTD</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.16 (토)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/수원FC/reclogo.png">수원FC</td>
+                <td></td>
+            <td><img src="/static/imgs/강원FC/reclogo.png">강원</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.16 (토)</td>
+            <td>20:00</td>
+            <td><img src="/static/imgs/포항 스틸러스/reclogo.png">포항 스틸러스</td>
+                <td></td>
+            <td><img src="/static/imgs/제주 유나이티드/reclogo.png">제주</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.16 (토)</td>
+            <td>20:00</td>
+            <td><img src="/static/imgs/FC서울/reclogo.png">FC서울</td>
+                <td></td>
+            <td><img src="/static/imgs/대구FC/reclogo.png">대구FC</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.30 (토)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/전북 현대 모터스/reclogo.png">전북 현대 모터스</td>
+                <td></td>
+            <td><img src="/static/imgs/제주 유나이티드/reclogo.png">제주</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.30 (토)</td>
+            <td>19:00</td>
+            <td><img src="/static/imgs/수원삼성/reclogo.png">수원삼성</td>
+                <td></td>
+            <td><img src="/static/imgs/김천 상무 프로축구단/reclogo.png">김천 상무 프로축구단</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.30 (토)</td>
+            <td>19:30</td>
+            <td><img src="/static/imgs/포항 스틸러스/reclogo.png">포항 스틸러스</td>
+                <td></td>
+            <td><img src="/static/imgs/FC서울/reclogo.png">FC서울</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.30 (토)</td>
+            <td>20:00</td>
+            <td><img src="/static/imgs/울산 현대 축구단/reclogo.png">울산 현대</td>
+                <td></td>
+            <td><img src="/static/imgs/강원FC/reclogo.png">강원</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.30 (토)</td>
+            <td>20:00</td>
+            <td><img src="/static/imgs/성남FC/reclogo.png">성남 FC</td>
+                <td></td>
+            <td><img src="/static/imgs/인천 유나이티드/reclogo.png">인천UTD</td>
+            </tr>
+
+            <tr>
+            <td>2022.07.31 (일)</td>
+            <td>19:30</td>
+            <td><img src="/static/imgs/수원FC/reclogo.png">수원FC</td>
+                <td></td>
+            <td><img src="/static/imgs/대구FC/reclogo.png">대구FC</td>
+            </tr>
+    </table>
+{% endblock %}
+
+
+{% block script %}
+<script>
+  function goThere(){
+        const dater = document.querySelector('#date')
+        jk = dater.options[dater.selectedIndex]
+            if (jk.value==="july_all"){
+                location.href = "july_all"}}
+
+</script>
+{% endblock %}
