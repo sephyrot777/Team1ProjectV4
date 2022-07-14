@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from players.models import Records, Soccers
-from teams.models import Stadiums
+from teams.models import Stadiums, Stadium
 from django.core import serializers
 
 # Create your views here.
@@ -14,14 +14,14 @@ from django.core import serializers
 class CoachView(View):
     def get(self, request):
         form = request.GET.dict()
-        tbs = Stadiums.objects.all()
+        tbs = Stadium.objects.all()
 
         if (form != {}):
             pinfo = Soccers.objects.filter(team=form['team'])
         else:
             pinfo = Soccers.objects.filter(team='FC서울')
 
-        print(pinfo)
+
 
         context = {'pinfo': pinfo, 'tbs': tbs}
         return render(request, 'players/coach1.html', context)
@@ -63,7 +63,7 @@ class RecordView(View):
                    'matchpoint': player.matchpoint,
                    }
 
-        print(context)
+
 
         return render(request, 'players/record.html', context)
 

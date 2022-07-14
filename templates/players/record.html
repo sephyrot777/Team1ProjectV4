@@ -6,19 +6,20 @@
     <style>
         #mtable th { text-align: end; width: 100px; border: 1px solid white; font-size: 15px;}
         #mtable td { text-align: center; width: 200px;border: 1px solid white; text-decoration: none;}
-        #main { width: 1500px; margin: 0 auto}
+        #records{margin: 0 auto; width : 100%; margin-top: 30px}
+        #records th {border-bottom:3px solid gray; text-align: center; padding: 5px; font-size: 20px}
+        #records td { font-size: 20px; text-align: center;}
     </style>
 
 {% endblock %}
 
 {% block contents %}
 <div class="bg-dark" id="main">
-    <h1 class="mt-4 text-center text-white fw-bold">선수 기록/순위</h1>
-    <h3 class="text-end text-white opacity-50 mt-2">2022-07</h3>
+    <h1 class="pt-3 text-center text-white fw-bold">선수 기록/순위</h1>
     <div class="row mt-n2 ">
             <div class="col-12">
                 <hr style="border:2px solid black">
-                <table class="table table-dark table-striped table-hover fw-bold text-center">
+                <table id="records" class="table table-dark table-striped table-hover fw-bold text-center">
                     <thead class="thead">
                         <tr style="height: 60px; vertical-align: middle">
                             <th style="width: 4%">순위</th>
@@ -44,7 +45,7 @@
                     <tbody>
                     {% for p in pbs %}
                     <tr class="text-warning" href="/players/record/?name={{ p.name }}">
-                        <td id="rank{{ p.rank }}">{{ p.rank }}</td>{#
+                        <td id="rank{{ p.rank }}">{{ p.rank }}</td>
                         <td id="name{{ p.rank }}"><a href="javascript:showrecord({{ p.rank }})" style="text-decoration: none; color: currentColor"  >{{ p.name }}</a></td>
                         <td id="team{{ p.rank }}"><img src="/static/imgs/{{ p.team }}/reclogo.png">{{ p.team }}</td>
                         <td id="goal{{ p.rank }}">{{ p.goal }}</td>
@@ -70,7 +71,7 @@
                         <tr><td colspan="6" class="d-none"></td></tr>
                     </tfoot>
                 </table>
-                <small style="float:right; color:grey">(2022.07.07 기준)</small>
+                <div style="float:right; color:grey; padding: 10px">(2022.07.07 기준)</div>
             </div>
             <div class="col"></div>
         </div><!-- 게시판 -->
@@ -81,7 +82,7 @@
         <div class="modal-content bg-dark text-white">
             <div class="modal-header">
             <h5 class="modal-title">플레이어 정보</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close-white" data-bs-dismiss="modal" aria-label="Close">닫기</button>
             </div>
             <div class="modal-body">
                 <div id="image" style="text-align: center; margin-bottom: 10px;"></div>
@@ -156,9 +157,6 @@
                         <td id="matchpoint">{{ matchpoint }}</td>
                     </tr>
                 </table>
-
-            </div>
-            <div class="modal-footer">
             </div>
         </div>
     </div>

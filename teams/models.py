@@ -15,3 +15,18 @@ class Stadiums(models.Model):
 
     class Meta:
         db_table = 'stadiums'
+
+class Stadium(models.Model):
+    id = models.AutoField(primary_key = True)
+    stname = models.CharField(max_length=256)
+    opdate = models.CharField(max_length=256)
+    based = models.CharField(max_length=256)
+    hteam = models.CharField(max_length=256)
+    accnum = models.IntegerField()
+    location = models.CharField(max_length=256)
+    addrstmp = models.IntegerField()
+    addrkey = models.CharField(max_length=256)
+    url = models.TextField()
+
+    class Meta:
+        db_table = 'stadium'

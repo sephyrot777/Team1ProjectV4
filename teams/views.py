@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from teams.models import Stadiums
+from teams.models import Stadiums, Stadium
 
 
 # Create your views here.
@@ -9,12 +9,12 @@ from teams.models import Stadiums
 class TeamsView(View):
     def get(self, request):
         form = request.GET.dict()
-        tbs = Stadiums.objects.all()
+        tbs = Stadium.objects.all()
 
         if (form != {}):
-            team = Stadiums.objects.get(based=form['based'])
+            team = Stadium.objects.get(based=form['based'])
         else:
-            team = Stadiums.objects.get(based='서울')
+            team = Stadium.objects.get(based='서울')
             print(team)
 
         context = {'tbs': tbs,
@@ -26,9 +26,8 @@ class TeamsView(View):
                    'addr': team.location,
                    'addrstmp': team.addrstmp,
                    'addrkey': team.addrkey,
+                   'url': team.url,
                    }
-
-        print(context)
 
         return render(request, 'teams/stadium.html', context)
 

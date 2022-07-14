@@ -7,8 +7,8 @@
         #wrap {display: flex}
         #nav { width: 250px;}
 
-        #mtable th { text-align: end; width: 100px; border: 1px solid black; font-size: 15px;}
-        #mtable td { text-align: center; width: 200px;border: 1px solid black}
+        #mtable th { text-align: end; width: 100px; border: 1px solid white; font-size: 15px;}
+        #mtable td { text-align: center; width: 200px;border: 1px solid white}
 
 
     </style>
@@ -121,15 +121,14 @@
 
 <div id="playermodal" class="fade modal" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content bg-dark text-white">
             <div class="modal-header">
             <h5 class="modal-title">플레이어 정보</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close-white" data-bs-dismiss="modal" aria-label="Close">닫기</button>
             </div>
             <div class="modal-body">
                 <div id="image" style="text-align: center; margin-bottom: 10px;"></div>
                 <table id="mtable" style="margin: 0 auto">
-
                     <tr>
                         <th>소속구단</th>
                         <td id="team"></td>
@@ -158,13 +157,9 @@
                         <th>생년월일</th>
                         <td id="birth"></td>
                     </tr>
-
-
                 </table>
+            </div>
 
-            </div>
-            <div class="modal-footer">
-            </div>
         </div>
     </div>
 </div>
