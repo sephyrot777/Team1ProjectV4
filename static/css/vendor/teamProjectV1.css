@@ -45,7 +45,7 @@
 
 /* 드롭다운 서브메뉴 사이즈 / border는 배치 끝나면 지움 */
 .nonlis .container{
-    border:1px solid red;
+    /*border:1px solid red;*/
     display:inline-block;
     height:300px;
 }

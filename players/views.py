@@ -16,10 +16,13 @@ class CoachView(View):
         form = request.GET.dict()
         tbs = Stadium.objects.all()
 
-        if (form != {}):
-            pinfo = Soccers.objects.filter(team=form['team'])
+        if (form == {}):
+            if request.session.get('myteam') is not None:
+                pinfo = Soccers.objects.filter(team=request.session['myteam'])
+            else:
+                pinfo = Soccers.objects.filter(team='수원 삼성 블루윙즈')
         else:
-            pinfo = Soccers.objects.filter(team='FC서울')
+            pinfo = Soccers.objects.filter(team=form['team'])
 
 
 
@@ -73,25 +76,3 @@ class RecordView(View):
         pass
 
 
-class PlayerView(View):
-    def get(self, request):
-        form = request.GET.dict()
-        print(form)
-        player1 = Records.objects.get(rank = form['rank'])
-        context = {'rank': player1.rank,
-                   'name': player1.name,
-                   'team': player1.team,
-                   'goal': player1.goal,
-                   'assist': player1.assist,
-                   'attackpoint': player1.attackpoint,
-                   'losspoint': player1.losspoint,
-                   'cornerkick': player1.cornerkick,
-                   'foul': player1.foul,
-                   'shoot': player1.shoot,
-                   'offside': player1.offside,
-                   'warning': player1.warning,
-                   'exit': player1.exit,
-                   'norun': player1.norun,
-                   'trip': player1.trip,
-                   'replace': player1.replace,
-                   'matchpoint': player1.matchpoint,}

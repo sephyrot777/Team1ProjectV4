@@ -25,7 +25,7 @@
         <nav class="navbar-dark bg-dark fs-5 fw-bold" style="position: fixed">
             <ul class="navbar-nav nav-fill" style="width: 250px;">
                 {% for t in tbs %}
-                <li class="nav-item mb-3"><a class="nav-link" href="/teams/stadium/?based={{ t.based }}">{{ t.hteam }}</a></li>
+                <li class="nav-item mb-3"><a class="nav-link" href="/teams/stadium/?hteam={{ t.hteam }}">{{ t.hteam }}</a></li>
                 {% endfor %}
             </ul>
         </nav>

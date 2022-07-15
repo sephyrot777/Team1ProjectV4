@@ -4,6 +4,7 @@
 {% block title %}{% endblock %}
 {% block style %}
     <link rel="stylesheet" href="{% static 'css/vendor/Index_SlideStyle.css' %}">
+{#    <link rel="stylesheet" href="{% static '/css/vendor/board_style.css' %}">#}
 {% endblock %}
 {% block contents %}
     <div id="main">
@@ -28,9 +29,10 @@
             <input type="hidden" value="{{ request.session.myteam }}" id="sessionval">
         </div>
 
-    <div class="mt-n2 text-right">
-         <div>
-            <table class="table table-striped table-hover " style="font-size: 12px;width: 500px">
+    <div class="mt-3 text-right" style="display: flex; justify-content: center">
+         <div class="text-center">
+            <table class="table table-striped table-hover " style="font-size: 12px;width: 700px">
+                <h3>리그 순위표</h3>
                 <hr style="border:2px solid black">
                     <tr style="height: 12px; text-align: center">
                         <th style="width: 50px">순위</th>
@@ -60,7 +62,53 @@
                 {% endfor %}
             </table>
         </div>
+
+        <div class="sub-contents-wrap ms-3">     <!-- 틀 -->
+
+            <div class="contents news text-center"><!-- content1 -->
+
+                <div class="table-wrap board-list list">   <!-- 표 -->
+                    <table class="table table-striped table-hover " style="width: 700px ;height: 460px; font-size: 12px; text-align: center; vertical-align: middle">
+                        <h3>공지사항</h3>
+                        <hr style="border:2px solid black">
+                        <colgroup>
+                            <col style="width: 50px;">
+                            <col style="width: auto;">
+                            <col style="width: 70px;">
+                            <col style="width: 70px;">
+                        </colgroup>
+
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>등록일</th>
+                            <th>조회수</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {% for a in at %}
+                        <tr class="text-primary">
+                            <td>{{ a.id }}</td>
+        {#                    <td>{{ a.title }}</td>  <!-- 링크 걸기 -->#}
+                            <td style="text-align: left; "><a style="text-decoration: none; color: black" href="{% url 'announce_detail' %}?no={{ a.id }}">
+                                <span style="color:white; background-color: black"; >　{{ a.category }}　</span>　
+                                {{ a.title }}</a></td>  <!-- 링크 걸기 -->
+                            <td>{{ a.regdate }}</td>
+                            <td>{{ a.view }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>  <!-- 표 -->
+
+            </div> <!-- content1 -->
+        </div>
     </div><!-- 게시판 -->
+
 
     <div>
             <div class="app container text-light text-center" style="border:1px solid lightgray; background:darkgray">
@@ -121,7 +169,7 @@
        myteam=sessionval.value
        // alert(myteam); //세션변수가 제대로 뜨는지 확인
         // myteam이 팀 이름일 때, 이미지 src와 상단 SNS 링크 교체
-       if (myteam == '강원 FC') {
+       if (myteam == '강원FC') {
            img1.src="{% static 'imgs/index_slide/gangwonfc/1.png' %}"
            img2.src="{% static 'imgs/index_slide/gangwonfc/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/gangwonfc/3.jpg' %}"
@@ -133,7 +181,7 @@
            youtube.href="https://www.youtube.com/user/gangwonfc/featured";
        }
 
-       else if (myteam == '김천 상무 FC') {
+       else if (myteam == '김천 상무 프로축구단') {
            img1.src="{% static 'imgs/index_slide/gimcheonfc/1.jpg' %}"
            img2.src="{% static 'imgs/index_slide/gimcheonfc/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/gimcheonfc/3.jpg' %}"
@@ -145,7 +193,7 @@
            youtube.href="https://www.youtube.com/channel/UCSZ-CvpbBm6JnZnWYmiNrlQ";
        }
 
-       else if (myteam == '대구 FC') {
+       else if (myteam == '대구FC') {
            img1.src="{% static 'imgs/index_slide/daegufc/1.jpg' %}"
            img2.src="{% static 'imgs/index_slide/daegufc/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/daegufc/3.jpg' %}"
@@ -157,7 +205,7 @@
            youtube.href="https://www.youtube.com/user/TheDaeguFC";
        }
 
-       else if (myteam == '서울 FC') {
+       else if (myteam == 'FC서울') {
            img1.src="{% static 'imgs/index_slide/seoulfc/1.JPG' %}"
            img2.src="{% static 'imgs/index_slide/seoulfc/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/seoulfc/3.png' %}"
@@ -169,7 +217,7 @@
            youtube.href="https://www.youtube.com/user/FCSEOUL";
        }
 
-       else if (myteam == '성남 FC') {
+       else if (myteam == '성남FC') {
            img1.src="{% static 'imgs/index_slide/seongnamfc/1.jpg' %}"
            img2.src="{% static 'imgs/index_slide/seongnamfc/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/seongnamfc/3.jpg' %}"
@@ -193,7 +241,7 @@
            youtube.href="https://www.youtube.com/user/bluewingsfc";
        }
 
-       else if (myteam == '수원 FC') {
+       else if (myteam == '수원FC') {
            img1.src="{% static 'imgs/index_slide/suwonfc/1.jpg' %}"
            img2.src="{% static 'imgs/index_slide/suwonfc/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/suwonfc/3.jpg' %}"
@@ -205,7 +253,7 @@
            youtube.href="https://www.youtube.com/channel/UCHPiDeQQyVcYe-nhyUanSWg";
        }
 
-       else if (myteam == '울산 현대') {
+       else if (myteam == '울산 현대 축구단') {
            img1.src="{% static 'imgs/index_slide/ulsanfc/1.jpg' %}"
            img2.src="{% static 'imgs/index_slide/ulsanfc/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/ulsanfc/3.jpg' %}"
@@ -217,7 +265,7 @@
            youtube.href="https://www.youtube.com/user/ULSANHYUNDAI";
        }
 
-       else if (myteam == '인천 유나이티드 FC') {
+       else if (myteam == '인천 유나이티드') {
            img1.src="{% static 'imgs/index_slide/incheonuntd/1.jpg' %}"
            img2.src="{% static 'imgs/index_slide/incheonuntd/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/incheonuntd/3.jpg' %}"
@@ -241,7 +289,7 @@
            youtube.href="https://www.youtube.com/user/JEONBUKHYUNDAI";
        }
 
-       else if (myteam == '제주 유나이티드 FC') {
+       else if (myteam == '제주 유나이티드') {
            img1.src="{% static 'imgs/index_slide/jejuunitedfc/1.jpg' %}"
            img2.src="{% static 'imgs/index_slide/jejuunitedfc/2.jpg' %}"
            img3.src="{% static 'imgs/index_slide/jejuunitedfc/3.jpg' %}"

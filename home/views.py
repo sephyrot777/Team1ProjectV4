@@ -2,24 +2,57 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core import serializers
+from urllib.parse import urlencode
+from math import ceil
+from board.models import News
+from home.models import Standing
+from join.models import Member
 
 # Create your views here.
 
 # 메인화면 뷰
-from home.models import Standing
-from join.models import Member
 
 
 class HomeView(View):
-    def get(self, request):
+    def get(self, request, perPage = 8):
         form = request.GET.dict()
         sbs = Standing.objects.all()
-        print(form)
+        query = ''
 
         if (form != {}):
             stand = Standing.objects.get(rank=form['rank'])
         else:
             stand = Standing.objects.get(rank='1')
+
+
+        if request.GET.get('keyword') is not None and request.GET.get('type') is not None:
+
+            if form['type'] == 'title':
+                announce_table = News.objects.select_related(). \
+                    filter(category__contains='notice', title__contains=form['keyword'])
+            elif form['type'] == 'content':
+                announce_table = News.objects.select_related(). \
+                    filter(category__contains='notice', content__contains=form['keyword'])
+
+
+            query = urlencode({'type': form['type'], 'keyword': form['keyword']})
+
+        else:
+            announce_table = News.objects.select_related().filter(category__contains='notice')
+            # announce_table = News.objects.select_related()
+
+
+        pages = ceil(announce_table.count() / perPage)
+
+        page = 1
+        if request.GET.get('page') is not None:
+            page = form['page']
+
+        start = (int(page) - 1) * perPage
+        end = start + perPage
+
+        announce_table = announce_table[start:end]
+        listPage = int((int(page) - 1) / 10) * 10 + 1
 
         context = {'sbs': sbs,
                    'rank': stand.rank,
@@ -33,9 +66,13 @@ class HomeView(View):
                    'goal': stand.goal,
                    'loss': stand.loss,
                    'gol': stand.gol,
+                   'at': announce_table,
+                   'pages': pages,
+                   'range': range(listPage, listPage + 10),
+                   'query': query
                    }
 
-        print(context)
+
 
         return render(request, 'index.html', context)
 

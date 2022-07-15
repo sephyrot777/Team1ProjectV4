@@ -11,11 +11,15 @@ class TeamsView(View):
         form = request.GET.dict()
         tbs = Stadium.objects.all()
 
-        if (form != {}):
-            team = Stadium.objects.get(based=form['based'])
+        if (form == {}):
+            if request.session.get('myteam') is not None:
+                team = Stadium.objects.get(hteam=request.session['myteam'])
+            else:
+                team = Stadium.objects.get(hteam='FC서울')
         else:
-            team = Stadium.objects.get(based='서울')
-            print(team)
+            team = Stadium.objects.get(hteam=form['hteam'])
+
+
 
         context = {'tbs': tbs,
                    'stname': team.stname,
